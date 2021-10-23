@@ -38,39 +38,50 @@
         <div class="row descRow">
             <div class="col-xs-12 col-sm-6">
                 <h2 class="display-6 descTitle">
-                    Drum Counter
+                    Mauser Internship: Drum Counter
                 </h2>
+                <h3>
+                    Skills: [Arduino, C Programming, Design Engineering, Manufacturing]
+                </h3>
 
                 
             </div>
             <div class="col-xs-12 col-sm-6">
                 <div class="embed-responsive embed-responsive-16by9">
-                    <iframe class="embed-responsive-item" id="video" src="https://www.youtube.com/embed/U9vtfRKvbYI?rel=0" allowfullscreen style="width: 100%; height: 45vh; margin: 5%;"></iframe>
+                    <iframe class="embed-responsive-item" id="video" src="https://www.youtube.com/embed/U9vtfRKvbYI?rel=0" allowfullscreen style="width: 100%; margin: 5%;"></iframe>
                   </div>
             </div>
         </div>
         <div class="row descRow">
             <div class="col-xs-12 col-sm-6">
                 <p class="descP">
-                    This was my main project for the Purdue Electric Racing club, Purdue's SAE electric club. It was a 3D printed plastic enclosure for the high 
-                    and low voltage electrical systems master switches. The enclosure was designed in SolidWorks and fabricated with 3D printing. It was attached 
-                    to the car for testing before the FSAE competition was canceled and everyone was sent home due to COVID-19. The enclosure included mounting 
-                    points for the two switches (the two large circled on the front), the power indicator lights, and a separate detachable module on the bottom 
-                    for two banana jacks.<br><br>
-                    The enclosure was designed to take up as little space as possible to have a minimal effect on the car body's aerodynamics while still completely
-                    enclosing the electrical components. The FSAE Rulebook mandated that the TSMP (Tractive System Measurement Points) mount, seen here at the bottom
-                    of the enclosure, had to be separated by a physical barrier from the rest of the components. The TSMP mount also needed to be insulated and 
-                    waterproofed, a requirement that did not apply to the rest of the enclosure. Because of this I decided to design it as a separate two-part module that 
-                    would be permanently glued into place and could be easily treated to be waterproof.
+                    The manufacturing plant I interned at during Summer 2021 reconditioned 55-gallon steel drums to be resold. The plant had been around since the 1940s and 
+                    continued to operate in much the same way as it had back then. The only production data being logged consistently was the final number of drums produced
+                     each day, which was collected manually using mechanical counters. Information like rejection rates and individual machine throughput wasn't logged. After 
+                     researching off the shelf data loggers, I realized that I could make a far more robust version for a fraction of the price. I made two of these counters 
+                     so that they could be placed at different points around the plant, allowing for information like the rejection or throughput rates at certain steps of the 
+                     reconditioning process to be measured.
+                    <br><br>
+                    The drum counter was controlled by an Arduino Nano and would be powered through USB. The counter included a real time clock (RTC) module, a micro-SD card 
+                    reader, and an LCD for displaying data and navigating menus. A key challenge for this project was memory management on the Arduino. One of the most 
+                    important features of the counter was its ability to read files from the SD card in order to display past data. However, the library that I was using to do 
+                    this required a 512 byte buffer to open the file, which was causing memory issues. To fix this, I first scaled down all of my global integer variables. Since 
+                    many of them were only counters that weren't at risk of integer overflow, I could get away with using Unsigned Shorts instead of Ints in many cases. I then
+                     started using #define instead of Const for all of my constants so these variables were no longer stored in memory. Finally, I changed several of the constant 
+                     Strings in my code to be stored in program memory (PROGMEM) instead of SRAM. This required some extra work, since Arduino is based on C and so all Strings 
+                     are stored as character arrays instead of objects which meant they worked a little different than I was used to. In the end I was able to reduce memory usage
+                      significantly and got everything working as intended.
+
                 </p>
             </div>
             <div class="col-xs-12 col-sm-6 ">
-                <img src="../project images/Drum Counter/counter screens.jpg" class="d-block" style="width: 100%; padding: 10%; margin: 5%;">
+                <img src="../project images/Drum Counter/counter screens.jpg" class="d-block" style="width: 100%; margin: 5%;">
             </div>
         </div>
     </div>
 </body>
 <script>
+    resizeVideo();
     window.addEventListener('resize', resizeVideo);
 
     // make the video the right size
