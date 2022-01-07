@@ -13,6 +13,16 @@
 }
 
 .topContainer {
+    width: 100%;
+    padding: 0px;
+}
+
+.imgCol {
+    padding: 0px;
+}
+
+.pictureRow, .nameRow {
+    width: 100%;
 }
 
 .viewOptions {
