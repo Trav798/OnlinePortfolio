@@ -32,8 +32,8 @@
 
 
 .descRow {
-    margin-left: 10%;
-    margin-right: 10%;
+    margin-left: 20%;
+    margin-right: 20%;
 }
 
 .descTitle {
@@ -44,11 +44,11 @@
 .descP {
     text-align: justify;
     text-justify: inter-word;
-    margin-top: 10%;
+    margin-top: 2%;
     font-size: 20px;
 }
 
 h3 {
-    font-size: 22px;
+    font-size: 18px;
     text-align: center;
 }
